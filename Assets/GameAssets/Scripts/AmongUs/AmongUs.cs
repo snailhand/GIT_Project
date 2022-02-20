@@ -103,7 +103,7 @@ public class AmongUs : Player<AmongUs>
     {
         if(!isGrounded)
         {
-            //states.Change<State_PlayerFall>();
+            states.Change<State_AmongUsFall>();
         }
     }
 
@@ -123,6 +123,7 @@ public class AmongUs : Player<AmongUs>
         if (inputs.GetJumpUp() && (jumpCounter > 0) && (verticalVelocity.y > stats.current.minJumpHeight))
         {
             verticalVelocity = Vector3.up * stats.current.minJumpHeight;
+            //print("vertical velocity: " + verticalVelocity);
         }
     }
 
