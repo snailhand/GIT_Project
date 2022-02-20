@@ -12,6 +12,7 @@ public class State_AmongUsBrake : AmongUsStates
 		player.SnapToGround();
 		player.Jump();
 		player.Fall();
+		player.Decelerate();
 
 		if (player.horizontalVelocity.sqrMagnitude == 0)
 		{
