@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class Player_StateManager<T> : MonoBehaviour where T : Player<T>
+public abstract class Player_StateManager<T> : MonoBehaviour where T : AmongUs<T>
 {
     private List<PlayerStates<T>> m_list = new List<PlayerStates<T>>();
 

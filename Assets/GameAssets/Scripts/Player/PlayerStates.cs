@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class PlayerStates<T> : MonoBehaviour where T : Player<T>
+public abstract class PlayerStates<T> : MonoBehaviour where T : AmongUs<T>
 {
     public UnityEvent onEnter;
     public UnityEvent onExit;
