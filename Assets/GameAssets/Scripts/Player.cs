@@ -88,6 +88,9 @@ public abstract class Player<T> : MonoBehaviour where T : Player<T>
         {
             //Create controller if controller == null
             controller = gameObject.AddComponent<CharacterController>();
+            controller.radius = 1f;
+            controller.height = 3.5f;
+            controller.center = new Vector3(0, 1.75f, 0);
             controller.skinWidth = 0.005f;
             controller.minMoveDistance = 0;
         }
@@ -112,8 +115,7 @@ public abstract class Player<T> : MonoBehaviour where T : Player<T>
         var offset = transform.up * (height * 0.5f - radius);
         var top = transform.position + offset;
         var bottom = transform.position - offset;
-        return Physics.CapsuleCast(top, bottom, radius, direction,
-            out hit, distance, layer, queryTriggerInteraction);
+        return Physics.CapsuleCast(top, bottom, radius, direction, out hit, distance, layer, queryTriggerInteraction);
     }
 
     //Returns true if a point is below the Player's step position
