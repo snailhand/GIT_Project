@@ -90,11 +90,9 @@ public class Player_InputManager : MonoBehaviour
     {
         var horizontal = GetAxis(xAxis);
         var vertical = GetAxis(yAxis);
-        var direction = new Vector3(horizontal, 0, vertical);
+        var direction = new Vector3(horizontal, 0, 0);
 
         magnitude = direction.magnitude;
-
-        print("magnitude: " + magnitude + ", direction: " + direction);
         return direction.normalized;
 
     }
