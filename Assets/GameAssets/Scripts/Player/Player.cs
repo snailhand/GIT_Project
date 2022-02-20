@@ -122,9 +122,7 @@ public abstract class Player<T> : MonoBehaviour where T : Player<T>
     //Calls Step method in State manager
     protected virtual void HandleStates()
     {
-        if(states != null)
-            states.Step();
-
+        states.Step();
     }
 
     //Calls CharacterController Move method
@@ -138,10 +136,12 @@ public abstract class Player<T> : MonoBehaviour where T : Player<T>
     {
         var distance = (height * 0.5f) - controller.radius + 0.1f;
 
-        if (Physics.SphereCast(transform.position, radius, -transform.up, out var hit, distance, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
+        RaycastHit hit;
+
+        if (Physics.SphereCast(transform.position, radius, -transform.up, out hit, distance, Physics.DefaultRaycastLayers, QueryTriggerInteraction.Ignore))
         {
             //If previous state is Falling or Landing
-            if (!isGrounded && EvaluateLanding(hit) && (verticalVelocity.y <= 0))
+            if (!isGrounded && CheckLanding(hit) && (verticalVelocity.y <= 0))
             {
                 isGrounded = true;
                 OnGroundEnter?.Invoke();
@@ -200,10 +200,7 @@ public abstract class Player<T> : MonoBehaviour where T : Player<T>
         }
     }
 
-    protected virtual bool EvaluateLanding(RaycastHit hit)
-    {
-        return true;
-    }
+    protected virtual bool CheckLanding(RaycastHit hit) => true;
 
     protected virtual void HandleSlopeLimit(RaycastHit hit) { }
 
@@ -211,7 +208,10 @@ public abstract class Player<T> : MonoBehaviour where T : Player<T>
 
     protected virtual void HandleCeilingCollision(RaycastHit hit) { }
 
-    protected virtual void OnUpdate() { }
+    protected virtual void OnUpdate()
+    {
+
+    }
 
     //Moves the Player smoothly in a given direction with velocity
     public virtual void Accelerate(Vector3 direction, float turnDrag, float acceleration, float topSpeed)
