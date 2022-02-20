@@ -26,7 +26,7 @@ public class State_AmongUsWalk : AmongUsStates
 			}
 			else
 			{
-				//Stop state
+				player.states.Change<State_AmongUsBrake>();
 			}
 		}
 		else
@@ -35,7 +35,7 @@ public class State_AmongUsWalk : AmongUsStates
 
 			if (player.horizontalVelocity.sqrMagnitude <= 0)
 			{
-				//Idle State
+				player.states.Change<State_AmongUsIdle>();
 			}
 		}
 	}
