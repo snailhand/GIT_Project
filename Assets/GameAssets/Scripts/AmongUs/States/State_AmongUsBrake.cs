@@ -14,6 +14,8 @@ public class State_AmongUsBrake : AmongUsStates
 		player.Fall();
 		player.Decelerate();
 
+		Debug.Log("State: Brakeing");
+
 		if (player.horizontalVelocity.sqrMagnitude == 0)
 		{
 			player.states.Change<State_AmongUsIdle>();
