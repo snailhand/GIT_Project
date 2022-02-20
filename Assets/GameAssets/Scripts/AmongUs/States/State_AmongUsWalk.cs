@@ -13,6 +13,8 @@ public class State_AmongUsWalk : AmongUsStates
 		player.Jump();
 		player.Fall();
 
+		print("State: Walking");
+
 		var inputDirection = player.inputs.GetCameraDirection(out var magnitude);
 
 		if (magnitude > 0)

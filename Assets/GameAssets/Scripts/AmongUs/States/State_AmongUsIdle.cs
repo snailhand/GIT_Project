@@ -15,6 +15,8 @@ public class State_AmongUsIdle : AmongUsStates
 		player.Jump();
 		player.Fall();
 
+		Debug.Log("State: Idle");
+
 		player.inputs.GetFacingDirection(out var magnitude);
 
 		if (magnitude > 0 || player.horizontalVelocity.sqrMagnitude > 0)
