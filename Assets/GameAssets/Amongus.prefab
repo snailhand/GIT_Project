@@ -529,6 +529,8 @@ GameObject:
   - component: {fileID: 7664254646867978932}
   - component: {fileID: 7664254646867978933}
   - component: {fileID: 7664254646867978934}
+  - component: {fileID: 827279469416721242}
+  - component: {fileID: 8637185693552001879}
   m_Layer: 0
   m_Name: Amongus
   m_TagString: Player
@@ -640,7 +642,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   states:
+  - {fileID: 8637185693552001879}
   - {fileID: 7664254646867978934}
+  - {fileID: 827279469416721242}
 --- !u!114 &7664254646867978934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -651,6 +655,42 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0c7116d53400e294d84e2c6af9397ca0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &827279469416721242
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747315569333601609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ae9451a3a96f3c4189c89053abb6e25, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onEnter:
+    m_PersistentCalls:
+      m_Calls: []
+  onExit:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &8637185693552001879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6747315569333601609}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c977d6119e5c2784fb7d7af102cdcd7a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   onEnter:
