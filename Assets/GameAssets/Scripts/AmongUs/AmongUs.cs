@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class AmongUs : AmongUs<AmongUs>
+public class AmongUs : Player<AmongUs>
 {
     public UnityEvent OnJump;
 
