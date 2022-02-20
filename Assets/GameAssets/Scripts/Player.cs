@@ -99,22 +99,22 @@ public abstract class Player<T> : MonoBehaviour where T : Player<T>
         states = GetComponent<Player_StateManager<T>>();
     }
 
-    //public virtual bool CapsuleCast(Vector3 direction, float distance, int layer = Physics.DefaultRaycastLayers,
-    //QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore)
-    //{
-    //    return CapsuleCast(direction, distance, out _, layer, queryTriggerInteraction);
-    //}
+    public virtual bool CapsuleCast(Vector3 direction, float distance, int layer = Physics.DefaultRaycastLayers,
+    QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore)
+    {
+        return CapsuleCast(direction, distance, out _, layer, queryTriggerInteraction);
+    }
 
-    //public virtual bool CapsuleCast(Vector3 direction, float distance,
-    //    out RaycastHit hit, int layer = Physics.DefaultRaycastLayers,
-    //    QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore)
-    //{
-    //    var offset = transform.up * (height * 0.5f - radius);
-    //    var top = transform.position + offset;
-    //    var bottom = transform.position - offset;
-    //    return Physics.CapsuleCast(top, bottom, radius, direction,
-    //        out hit, distance, layer, queryTriggerInteraction);
-    //}
+    public virtual bool CapsuleCast(Vector3 direction, float distance,
+        out RaycastHit hit, int layer = Physics.DefaultRaycastLayers,
+        QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore)
+    {
+        var offset = transform.up * (height * 0.5f - radius);
+        var top = transform.position + offset;
+        var bottom = transform.position - offset;
+        return Physics.CapsuleCast(top, bottom, radius, direction,
+            out hit, distance, layer, queryTriggerInteraction);
+    }
 
     //Returns true if a point is below the Player's step position
     public virtual bool IsPointUnderStep(Vector3 point)
@@ -125,7 +125,9 @@ public abstract class Player<T> : MonoBehaviour where T : Player<T>
     //Calls Step method in State manager
     protected virtual void HandleStates()
     {
-        states.Step();
+        if(states != null)
+            states.Step();
+
     }
 
     //Calls CharacterController Move method
