@@ -88,11 +88,6 @@ public abstract class Player<T> : MonoBehaviour where T : Player<T>
         {
             //Create controller if controller == null
             controller = gameObject.AddComponent<CharacterController>();
-            controller.radius = 1f;
-            controller.height = 3.5f;
-            controller.center = new Vector3(0, 1.75f, 0);
-            controller.skinWidth = 0.005f;
-            controller.minMoveDistance = 0;
         }
     }
 
