@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Player<T> : MonoBehaviour where T : Player<T>
+public abstract class AmongUs<T> : MonoBehaviour where T : AmongUs<T>
 {
     //Called when the Player lands on the ground
     public UnityEvent OnGroundEnter;
