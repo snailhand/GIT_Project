@@ -5,27 +5,38 @@ using UnityEngine.Events;
 
 public class AmongUs : Player<AmongUs>
 {
+    //If want to add sound/particle can use event//
+
+    //Called when Player jumps 
     public UnityEvent OnJump;
 
+    //Called when Player gets damaged
     public UnityEvent OnHurt;
 
+    //Called when the Player dies
     public UnityEvent OnDeath;
 
+    //Respawn Transforms
     private Vector3 respawnPosition;
     private Quaternion respawnRoatation;
 
+    //Returns the Player Input Manager script instance
     public Player_InputManager inputs { get; private set; }
 
+    //Returns the Player States Manager script instance
     public AmongUs_StatsManager stats { get; private set; }
 
+    //Returns the Health script instance
     public Health health { get; private set; }
 
-    public bool onWater { get; private set; }
+    //public bool onWater { get; private set; }
 
+    //Returns how many times the Player has jumped
     public int jumpCounter { get; private set; }
 
     protected override void Awake()
     {
+        //Reference components in transform
         base.Awake();
         inputs = GetComponent<Player_InputManager>();
         stats = GetComponent<AmongUs_StatsManager>();
@@ -35,18 +46,21 @@ public class AmongUs : Player<AmongUs>
         OnGroundEnter.AddListener(ResetJumps);
     }
 
+    //Resets player state, HP and transform
     public virtual void Respawn()
     {
         health.ResetHp();
         transform.SetPositionAndRotation(respawnPosition, respawnRoatation);
     }
 
+    //Sets the position and rotation of the Player's respawn through checkpoints
     public virtual void SetRespawn(Vector3 position, Quaternion rotation)
     {
         respawnPosition = position;
         respawnRoatation = rotation;
     }
 
+    //Decreases the Player's HP with proper interaction
     public virtual void TakeDamage(int amount)
     {
         if(!health.isEmpty && !health.recovering)
@@ -63,42 +77,50 @@ public class AmongUs : Player<AmongUs>
         }
     }
 
+    //Kills the Player
     public virtual void Die()
     {
         health.Set(0);
         OnDeath?.Invoke();
     }
 
+    //Moves the Player smoothly in a given direction
     public virtual void Accelerate(Vector3 direction)
     {
         Accelerate(direction, stats.current.turnDrag, stats.current.acceleration, stats.current.topSpeed);
     }
 
+    //Slows the Player smoothly 
     public virtual void Decelerate()
     {
         Decelerate(stats.current.deceleration);
     }
 
+    //Smoothly reduces the horizontal velocity of Player 
     public virtual void Friction()
     {
         Decelerate(stats.current.friction);
     }
 
+    //Downwards force applied to the Player
     public virtual void Gravity()
     {
         Gravity(stats.current.gravity);
     }
 
+    //Applies Downward force towards ground
     public virtual void SnapToGround()
     {
         SnapToGround(stats.current.snapForce);
     }
 
+    //Rotates the player smoothly in a given direction
     public virtual void FaceDirectionSmooth(Vector3 direction)
     {
         FaceDirection(direction, stats.current.rotationSpeed);
     }
 
+    //Transitions between Jump and Fall state
     public virtual void Fall()
     {
         if(!isGrounded)
@@ -107,6 +129,7 @@ public class AmongUs : Player<AmongUs>
         }
     }
 
+    //Handles jump from grounded state
     public virtual void Jump()
     {
         var canMultiJump = (jumpCounter > 0) && (jumpCounter < stats.current.multiJumps);
@@ -127,6 +150,7 @@ public class AmongUs : Player<AmongUs>
         }
     }
 
+    //Applies an upward force to the Player
     public virtual void Jump(float height)
     {
         jumpCounter++;
@@ -134,16 +158,22 @@ public class AmongUs : Player<AmongUs>
         OnJump?.Invoke();
     }
 
-    public virtual void DirectionalJump(Vector3 direction, float height, float distance)
+    //Applies jump force to a given direction
+    //public virtual void DirectionalJump(Vector3 direction, float height, float distance)
+    //{
+    //    jumpCounter++;
+    //    verticalVelocity = Vector3.up * height;
+    //    horizontalVelocity = direction * distance;
+    //    OnJump?.Invoke();
+    //}
+
+    //Sets the jump counter back to 0 
+    public virtual void ResetJumps()
     {
-        jumpCounter++;
-        verticalVelocity = Vector3.up * height;
-        horizontalVelocity = direction * distance;
-        OnJump?.Invoke();
+        jumpCounter = 0;
     }
 
-    public virtual void ResetJumps() => jumpCounter = 0;
-
+    //Handles Collision through CharacterController
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
         if (hit.rigidbody)
