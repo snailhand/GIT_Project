@@ -22,7 +22,11 @@ public class CheckpointScript : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            gm.lastCheckPointPos = transform.position;
+            if(other.TryGetComponent<AmongUs>(out var player))
+            {
+                gm.lastCheckPointPos = transform.position;
+                player.SetRespawn(transform.position, transform.rotation);
+            }
         }
     }
 }
