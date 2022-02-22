@@ -5,9 +5,13 @@ using UnityEngine.Events;
 
 public class Health : MonoBehaviour
 {
+    //Starting Health
     public int startHp;
+    //Max Health player can obtain
     public int maxHp;
+    //Invulnerable period
     public float cooldown = 1f;
+
     public UnityEvent OnChange;
 
     private float timeSinceLastDamage;
