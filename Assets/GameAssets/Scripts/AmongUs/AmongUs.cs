@@ -66,8 +66,12 @@ public class AmongUs : Player<AmongUs>
         if(!health.isEmpty && !health.recovering)
         {
             health.Damage(amount);
+            //Applies force that pushes Player away from the obstacle
+            horizontalVelocity = -transform.forward * stats.current.hurtBackwards;
+            verticalVelocity = Vector3.up * stats.current.hurtUpwards;
 
-
+            //Changes current state to hurt state
+            states.Change<State_AmongUsHurt>();
             OnHurt?.Invoke();
 
             if(health.isEmpty)
@@ -139,7 +143,7 @@ public class AmongUs : Player<AmongUs>
         {
             if (inputs.GetJumpDown())
             {
-                print("jump");
+                //print("jump");
                 Jump(stats.current.maxJumpHeight);
             }
         }
