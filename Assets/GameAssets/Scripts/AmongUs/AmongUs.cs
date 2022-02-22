@@ -139,14 +139,15 @@ public class AmongUs : Player<AmongUs>
         {
             if (inputs.GetJumpDown())
             {
+                print("jump");
                 Jump(stats.current.maxJumpHeight);
             }
         }
+        //print("vertical velocity: " + verticalVelocity);
 
         if (inputs.GetJumpUp() && (jumpCounter > 0) && (verticalVelocity.y > stats.current.minJumpHeight))
         {
             verticalVelocity = Vector3.up * stats.current.minJumpHeight;
-            //print("vertical velocity: " + verticalVelocity);
         }
     }
 
@@ -154,6 +155,7 @@ public class AmongUs : Player<AmongUs>
     public virtual void Jump(float height)
     {
         jumpCounter++;
+        //print("jumpCounter: " + jumpCounter);
         verticalVelocity = Vector3.up * stats.current.maxJumpHeight;
         OnJump?.Invoke();
     }

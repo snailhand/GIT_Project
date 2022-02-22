@@ -130,12 +130,11 @@ public class Player_InputManager : MonoBehaviour
 
         return(axisValue);
     }
-
+    
     protected virtual bool GetButton(string name)
     {
         if(!m_buttons.ContainsKey(name))
         {
-            //print("pressing: " + name);
             m_buttons.Add(name, new Button());
         }
         return (active && m_buttons[name].GetButton() || Input.GetButton(name));
@@ -143,22 +142,20 @@ public class Player_InputManager : MonoBehaviour
 
     protected virtual bool GetButtonUp(string name)
     {
-        //print("buttonUp: " + name);
         if (!m_buttons.ContainsKey(name))
         {
             m_buttons.Add(name, new Button());
         }
-        return (active && m_buttons[name].GetButtonUp() || Input.GetButton(name));
+        return (active && m_buttons[name].GetButtonUp() || Input.GetButtonUp(name));
     }
 
     protected virtual bool GetButtonDown(string name)
     {
-        //print("buttonDown: " + name);
         if (!m_buttons.ContainsKey(name))
         {
             m_buttons.Add(name, new Button());
         }
-        return (active && m_buttons[name].GetButtonDown() || Input.GetButton(name));
+        return (active && m_buttons[name].GetButtonDown() || Input.GetButtonDown(name));
     }
 
 
