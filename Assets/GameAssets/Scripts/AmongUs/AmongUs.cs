@@ -46,6 +46,12 @@ public class AmongUs : Player<AmongUs>
         OnGroundEnter.AddListener(ResetJumps);
     }
 
+    private void LateUpdate()
+    {
+        //Lock x axis of player
+        transform.position = new Vector3(3.43f, transform.position.y, transform.position.z);
+    }
+
     //Resets player state, HP and transform
     public virtual void Respawn()
     {
@@ -206,6 +212,12 @@ public class AmongUs : Player<AmongUs>
         }
         else if (!health.isEmpty)
         {
+            //spring interaction
+            if((hit.normal.y > 0.5f) && hit.collider.TryGetComponent<Spring>(out var spring))
+            {
+                verticalVelocity = Vector3.zero;
+                spring.PushInDirection(this);
+            }
 
         }
     }
