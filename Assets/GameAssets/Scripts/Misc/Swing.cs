@@ -4,24 +4,20 @@ using UnityEngine;
 
 public class Swing : MonoBehaviour
 {
-    Rigidbody rb;
-
-    public float currentSpeed;
-    public float maxSpeed;
-    public float minSpeed;
-
+    public float speed;
     public float leftAngle;
     public float rightAngle;
 
-    bool movingClockwise;
+    public bool movingClockwise;
+    private Rigidbody rb;
 
-    void Start()
+
+    private void Start()
     {
         rb = GetComponent<Rigidbody>();
-        movingClockwise = true;
     }
 
-    void Update()
+    private void Update()
     {
         Move();
     }
@@ -45,18 +41,14 @@ public class Swing : MonoBehaviour
     {
         ChangeMoveDir();
 
-        if(currentSpeed == maxSpeed)
+        if (movingClockwise)
         {
-            if (movingClockwise)
-            {
-                rb.angularVelocity = Vector3.right * currentSpeed;
-            }
+            rb.angularVelocity = Vector3.right * speed;
+        }
 
-            if (!movingClockwise)
-            {
-                rb.angularVelocity = Vector3.left * currentSpeed;
-            }
-
+        if (!movingClockwise)
+        {
+            rb.angularVelocity = Vector3.left * speed;
         }
     }
 }
