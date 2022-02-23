@@ -67,14 +67,15 @@ public class AmongUs : Player<AmongUs>
     }
 
     //Decreases the Player's HP with proper interaction
-    public virtual void TakeDamage(int amount)
+    public virtual void TakeDamage(int amount, Vector3 distance)
     {
         if(!health.isEmpty && !health.recovering)
         {
             health.Damage(amount);
             //Applies force that pushes Player away from the obstacle
-            horizontalVelocity = -transform.forward * stats.current.hurtBackwards;
+            horizontalVelocity = /*-transform.forward*/ distance * stats.current.hurtBackwards;
             verticalVelocity = Vector3.up * stats.current.hurtUpwards;
+            FaceDirection(-horizontalVelocity);
 
             //Changes current state to hurt state
             states.Change<State_AmongUsHurt>();
@@ -216,7 +217,7 @@ public class AmongUs : Player<AmongUs>
             if((hit.normal.y > 0.5f) && hit.collider.TryGetComponent<Spring>(out var spring))
             {
                 verticalVelocity = Vector3.zero;
-                spring.PushInDirection(this);
+                spring.BounceUpwards(this);
             }
 
         }
