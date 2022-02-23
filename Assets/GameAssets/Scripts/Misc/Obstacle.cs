@@ -19,7 +19,11 @@ public class Obstacle : MonoBehaviour
         {
             if(other.TryGetComponent<AmongUs>(out var player))
             {
-                player.TakeDamage(damage);
+                //Get direction of contact
+                var collisionPoint = other.ClosestPoint(transform.position);
+                Vector3 direction = (collisionPoint - transform.position).normalized;
+
+                player.TakeDamage(damage, direction);
             }
         }
     }
