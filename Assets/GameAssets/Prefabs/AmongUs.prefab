@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4994864466979709560}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leg_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -40,7 +40,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1771708967958745492}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Backpack_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -70,7 +70,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2228821327317301660}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Amongus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -101,7 +101,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2545744305253493822}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4013678954613332}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body_Btm
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -164,7 +164,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3799593789871888190}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -195,7 +195,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 513859900839173815}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Body_Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -227,7 +227,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8468656112521813964}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hips
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -270,7 +270,7 @@ GameObject:
   - component: {fileID: 4205022394698771572}
   - component: {fileID: 1342206102}
   - component: {fileID: 1342206101}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: AmongUs
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -362,8 +362,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7449869560d979148a916a79796d8b24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startHp: 3
-  maxHp: 3
+  startHp: 99
+  maxHp: 99
   cooldown: 1
   OnChange:
     m_PersistentCalls:
@@ -522,7 +522,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2120707588267939260}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Backpack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -553,7 +553,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5376244710586630317}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Root
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -586,7 +586,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8808203633054907833}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leg_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,7 +617,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1867729238370954880}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leg_L_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -648,7 +648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5938600217532848792}
   - component: {fileID: 3660929640530155165}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Amongus_Model
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -740,7 +740,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1204530587685974275}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mask_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -772,7 +772,7 @@ GameObject:
   - component: {fileID: 9147459476642456679}
   - component: {fileID: 6417359142254929147}
   - component: {fileID: 8470948130123410851}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Anthenna
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -850,7 +850,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3376989631897525628}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Leg_R_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -880,7 +880,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2315920441759779879}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Head_end
   m_TagString: Untagged
   m_Icon: {fileID: 0}
