@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 91cfbe641e743554c8bcf8dd8e2d02b5, type: 3}
   m_Name: AmongUsData
   m_EditorClassIdentifier: 
-  rotationSpeed: 600
+  rotationSpeed: 1000
   gravity: 50
   snapForce: 15
   pushForce: 4
-  acceleration: 40
-  deceleration: 40
+  acceleration: 20
+  deceleration: 30
   friction: 20
-  topSpeed: 7
+  topSpeed: 8
   turnDrag: 30
   multiJumps: 2
   jumpBufferThreshold: 0.15
-  maxJumpHeight: 20
+  maxJumpHeight: 25
   minJumpHeight: 10
   hurtUpwards: 15
   hurtBackwards: 10

@@ -13,10 +13,7 @@ public abstract class Player_StateManager<T> : MonoBehaviour where T : Player<T>
     public PlayerStates<T> current { get; private set; }
 
     //Returns the index of the current Plary state
-    public int index()
-    {
-        return m_list.IndexOf(current);
-    }
+    public int index => m_list.IndexOf(current);
 
     //Returns the instance of the Player related to this state manager
     public T player { get; private set; }
