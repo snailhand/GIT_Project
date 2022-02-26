@@ -238,8 +238,12 @@ public class AmongUs : Player<AmongUs>
                 }
                 else
                 {
+                    //Get direction of contact
+                    var collisionPoint = hit.collider.ClosestPoint(transform.position);
+                    Vector3 direction = (collisionPoint - transform.position).normalized;
+
                     //Take damage
-                    TakeDamage(1,-Vector3.forward);
+                    TakeDamage(1, -direction);
                 }
             }
         }
