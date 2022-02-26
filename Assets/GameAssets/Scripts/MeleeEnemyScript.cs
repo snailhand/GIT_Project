@@ -24,7 +24,7 @@ public class MeleeEnemyScript : MonoBehaviour
         {
             if (distance < chaseRange)
             {
-                currentState = "ChaseState");
+                currentState = "ChaseState";
             }
         }
         else if (currentState == "ChaseState")
