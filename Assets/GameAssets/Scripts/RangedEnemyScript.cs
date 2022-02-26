@@ -42,6 +42,11 @@ public class RangedEnemyScript : MonoBehaviour
         }
     }
 
+    private void Start()
+    {
+        target = GameObject.FindGameObjectWithTag("Player").transform;
+    }
+
     void Update()
     {
         // do nothing when no target
@@ -60,7 +65,7 @@ public class RangedEnemyScript : MonoBehaviour
         // shoot when aimed
         if (aimed)
         {
-            gun.Fire();
+            gun.Fire(target);
         }
     }
 }
