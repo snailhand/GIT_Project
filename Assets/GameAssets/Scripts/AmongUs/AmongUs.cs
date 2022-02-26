@@ -214,15 +214,20 @@ public class AmongUs : Player<AmongUs>
 
         if (hit.collider.CompareTag("Enemy"))
         {
-            if ((velocity.y <= 0) && IsPointUnderStep(hit.point))
+            if(hit.collider.TryGetComponent<MeleeEnemyScript>(out var enemy))
             {
-                //Take damage
+                if ((velocity.y <= 0) && IsPointUnderStep(hit.point))
+                {
+                    //Damage the enemy & bounce up
+                    var bounce = Mathf.Max(-verticalVelocity.y, stats.current.hurtUpwards);
+                    verticalVelocity = Vector3.up * bounce;
 
-            }
-            else
-            {
-                //Damage the enemy
-
+                }
+                else
+                {
+                    //Take damage
+                    TakeDamage(1,-Vector3.forward);
+                }
             }
         }
         else if (!health.isEmpty)

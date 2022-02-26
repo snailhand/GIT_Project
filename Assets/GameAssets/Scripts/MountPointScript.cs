@@ -27,10 +27,10 @@ public class MountPointScript : MonoBehaviour
 #endif
     }
 
-    void Awake()
-    {
-        turret = transform.GetChild(0);
-    }
+    //void Awake()
+    //{
+    //    turret = transform.GetChild(0);
+    //}
 
     public bool Aim(Vector3 targetPoint)
     {
