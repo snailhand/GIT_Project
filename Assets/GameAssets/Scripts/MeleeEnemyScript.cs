@@ -39,14 +39,14 @@ public class MeleeEnemyScript : MonoBehaviour
                 currentState = "AttackState";
             }
 
-            if (target.position.z > transform.position.z)
+            if (target.position.z < transform.position.z)
             {
-                transform.Translate(transform.forward * speed * Time.deltaTime);
+                transform.Translate(-transform.forward * speed * Time.deltaTime);
                 transform.rotation = Quaternion.Euler(0, 180, 0);
             }
             else
             {
-                transform.Translate(-transform.forward * speed * Time.deltaTime);
+                transform.Translate(transform.forward * speed * Time.deltaTime);
                 transform.rotation = Quaternion.identity;
             }
         }

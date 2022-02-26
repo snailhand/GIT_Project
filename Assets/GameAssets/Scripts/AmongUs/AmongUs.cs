@@ -217,10 +217,12 @@ public class AmongUs : Player<AmongUs>
             if ((velocity.y <= 0) && IsPointUnderStep(hit.point))
             {
                 //Take damage
+
             }
             else
             {
                 //Damage the enemy
+
             }
         }
         else if (!health.isEmpty)
