@@ -19,10 +19,10 @@ MonoBehaviour:
   acceleration: 20
   deceleration: 30
   friction: 20
-  topSpeed: 8
+  topSpeed: 9
   turnDrag: 30
   multiJumps: 2
-  jumpBufferThreshold: 0.15
+  jumpBufferThreshold: 0.2
   maxJumpHeight: 25
   minJumpHeight: 10
   hurtUpwards: 15

@@ -72,8 +72,20 @@ public class AmongUs : Player<AmongUs>
         if(!health.isEmpty && !health.recovering)
         {
             health.Damage(amount);
+            //var minVelocity = stats.current.topSpeed / 2f;
+            //var velocityLimit = horizontalVelocity.magnitude / minVelocity;
+
+            //if(horizontalVelocity.magnitude > minVelocity && velocityLimit <= 2f)
+            //{
+            //    horizontalVelocity = distance * stats.current.hurtBackwards * velocityLimit;
+            //}
+            //else
+            //{
+            //    horizontalVelocity = distance * stats.current.hurtBackwards;
+            //}
+
             //Applies force that pushes Player away from the obstacle
-            horizontalVelocity = /*-transform.forward*/ distance * stats.current.hurtBackwards;
+            horizontalVelocity = distance * stats.current.hurtBackwards;
             verticalVelocity = Vector3.up * stats.current.hurtUpwards;
             FaceDirection(-horizontalVelocity);
 
