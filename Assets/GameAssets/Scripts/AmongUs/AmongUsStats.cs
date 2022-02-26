@@ -8,6 +8,7 @@ public class AmongUsStats : PlayerStats<AmongUsStats>
     public float gravity = 50f;
     public float snapForce = 15f;
     public float pushForce = 4f;
+    public float slideForce = 10f;
 
     [Header("Movement Stats")]
     public float acceleration = 20f;

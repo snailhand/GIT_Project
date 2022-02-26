@@ -57,6 +57,7 @@ public class AmongUs : Player<AmongUs>
     {
         health.ResetHp();
         transform.SetPositionAndRotation(respawnPosition, respawnRoatation);
+        states.Change<State_AmongUsIdle>();
     }
 
     //Sets the position and rotation of the Player's respawn through checkpoints
@@ -105,6 +106,21 @@ public class AmongUs : Player<AmongUs>
     {
         health.Set(0);
         OnDeath?.Invoke();
+    }
+
+    //Moves the Player down slopes
+    protected override void HandleSlopeLimit(RaycastHit hit)
+    {
+        var slopeDirection = Vector3.Cross(hit.normal, Vector3.Cross(hit.normal, Vector3.up));
+        slopeDirection = slopeDirection.normalized;
+        controller.Move(slopeDirection * stats.current.slideForce * Time.deltaTime);
+    }
+
+    protected override void HandleHighLedge(RaycastHit hit)
+    {
+        var edgeNormal = hit.point - transform.position;
+        var edgePushDirection = Vector3.Cross(edgeNormal, Vector3.Cross(edgeNormal, Vector3.up));
+        controller.Move(edgePushDirection * stats.current.slideForce * Time.deltaTime);
     }
 
     //Moves the Player smoothly in a given direction

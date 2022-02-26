@@ -4349,7 +4349,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1916679100}
   m_LocalRotation: {x: 0.42261827, y: -0, z: -0, w: 0.9063079}
-  m_LocalPosition: {x: 2.86, y: 4.54, z: 27.88}
+  m_LocalPosition: {x: 2.86, y: 4.54, z: 29.62}
   m_LocalScale: {x: 4.8432, y: 0.5, z: 8}
   m_Children: []
   m_Father: {fileID: 224574611}
@@ -6013,6 +6013,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: RangedEnemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 25550919522138064, guid: 7668faffe95055342a0c3311ca27e37f,
+        type: 3}
+      propertyPath: angleLimit
+      value: 90
       objectReference: {fileID: 0}
     - target: {fileID: 25550919522138065, guid: 7668faffe95055342a0c3311ca27e37f,
         type: 3}

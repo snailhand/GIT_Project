@@ -16,6 +16,7 @@ MonoBehaviour:
   gravity: 50
   snapForce: 15
   pushForce: 4
+  slideForce: 15
   acceleration: 20
   deceleration: 30
   friction: 20
