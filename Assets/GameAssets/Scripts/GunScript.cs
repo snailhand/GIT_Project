@@ -10,6 +10,7 @@ public class GunScript : MonoBehaviour
 
     bool firing;
     float fireTimer;
+    Transform targetTransform;
 
     int gunPointIndex;
 
@@ -42,12 +43,16 @@ public class GunScript : MonoBehaviour
     void SpawnShot()
     {
         var gunPoint = gunPoints[gunPointIndex++];
-        Instantiate(shotPrefab, gunPoint.position, gunPoint.rotation);
+        var bullet = Instantiate(shotPrefab, gunPoint.position, gunPoint.rotation);
+
+        bullet.GetComponent<BulletScript>().target = targetTransform;
+        Destroy(bullet, 4);
         gunPointIndex %= gunPoints.Length;
     }
 
-    public void Fire()
+    public void Fire(Transform direction)
     {
         firing = true;
+        targetTransform = direction;
     }
 }
