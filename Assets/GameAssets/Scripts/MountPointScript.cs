@@ -9,11 +9,10 @@ public class MountPointScript : MonoBehaviour
     public float angleLimit = 90f;
     [Range(0, 360f)]
     public float aimTolerance = 1f;
-    public float turnSpeed = 90f;
+    [Range(0, 50f)]
     public float range;
-
-    [SerializeField]
-    Transform turret;
+    public float turnSpeed = 90f;
+    public Transform turret;
 
     void OnDrawGizmos()
     {

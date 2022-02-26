@@ -222,6 +222,8 @@ public class AmongUs : Player<AmongUs>
                     var bounce = Mathf.Max(-verticalVelocity.y, stats.current.hurtUpwards);
                     verticalVelocity = Vector3.up * bounce;
 
+                    //TO BE REPLACED WITH ENEMY DEATH ANIMATION
+                    Destroy(enemy.gameObject);
                 }
                 else
                 {
