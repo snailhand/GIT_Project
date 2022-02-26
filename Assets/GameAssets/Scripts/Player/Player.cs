@@ -208,9 +208,11 @@ public abstract class Player<T> : MonoBehaviour where T : Player<T>
 
     protected virtual void HandleCeilingCollision(RaycastHit hit) { }
 
-    protected virtual void OnUpdate()
-    {
+    protected virtual void OnUpdate() { }
 
+    protected virtual void SetController(bool active)
+    {
+        controller.enabled = active;
     }
 
     //Moves the Player smoothly in a given direction with velocity

@@ -24,8 +24,9 @@ public class CheckpointScript : MonoBehaviour
         {
             if(other.TryGetComponent<AmongUs>(out var player))
             {
+                print("Respawn point set at: " + transform.position);
                 gm.lastCheckPointPos = transform.position;
-                player.SetRespawn(transform.position, transform.rotation);
+                player.SetRespawn(this.transform.position, this.transform.rotation);
             }
         }
     }

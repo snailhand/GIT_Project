@@ -24,7 +24,7 @@ MonoBehaviour:
   turnDrag: 30
   multiJumps: 2
   jumpBufferThreshold: 0.2
-  maxJumpHeight: 25
+  maxJumpHeight: 20
   minJumpHeight: 10
   hurtUpwards: 15
   hurtBackwards: 10

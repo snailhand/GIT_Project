@@ -12,7 +12,6 @@ public class State_AmongUsFall : AmongUsStates
 		player.SnapToGround();
 		player.Jump();
 
-		print("State: Falling");
 		if (!player.isGrounded)
 		{
 			var inputDirection = player.inputs.GetCameraDirection(out var magnitude);

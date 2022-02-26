@@ -17,8 +17,9 @@ public class AmongUs : Player<AmongUs>
     public UnityEvent OnDeath;
 
     //Respawn Transforms
+    [SerializeField]
     private Vector3 respawnPosition;
-    private Quaternion respawnRoatation;
+    private Quaternion respawnRotation;
 
     //Returns the Player Input Manager script instance
     public Player_InputManager inputs { get; private set; }
@@ -55,8 +56,11 @@ public class AmongUs : Player<AmongUs>
     //Resets player state, HP and transform
     public virtual void Respawn()
     {
+        print("Respawning at: " + respawnPosition);
         health.ResetHp();
-        transform.SetPositionAndRotation(respawnPosition, respawnRoatation);
+        SetController(false);
+        transform.SetPositionAndRotation(respawnPosition, respawnRotation);
+        SetController(true);
         states.Change<State_AmongUsIdle>();
     }
 
@@ -64,7 +68,7 @@ public class AmongUs : Player<AmongUs>
     public virtual void SetRespawn(Vector3 position, Quaternion rotation)
     {
         respawnPosition = position;
-        respawnRoatation = rotation;
+        respawnRotation = rotation;
     }
 
     //Decreases the Player's HP with proper interaction
@@ -115,7 +119,7 @@ public class AmongUs : Player<AmongUs>
         slopeDirection = slopeDirection.normalized;
         controller.Move(slopeDirection * stats.current.slideForce * Time.deltaTime);
     }
-
+    
     protected override void HandleHighLedge(RaycastHit hit)
     {
         var edgeNormal = hit.point - transform.position;
@@ -198,15 +202,6 @@ public class AmongUs : Player<AmongUs>
         verticalVelocity = Vector3.up * stats.current.maxJumpHeight;
         OnJump?.Invoke();
     }
-
-    //Applies jump force to a given direction
-    //public virtual void DirectionalJump(Vector3 direction, float height, float distance)
-    //{
-    //    jumpCounter++;
-    //    verticalVelocity = Vector3.up * height;
-    //    horizontalVelocity = direction * distance;
-    //    OnJump?.Invoke();
-    //}
 
     //Sets the jump counter back to 0 
     public virtual void ResetJumps()
