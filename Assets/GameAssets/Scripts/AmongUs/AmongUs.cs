@@ -50,7 +50,7 @@ public class AmongUs : Player<AmongUs>
     private void LateUpdate()
     {
         //Lock x axis of player
-        transform.position = new Vector3(3.43f, transform.position.y, transform.position.z);
+        transform.position = new Vector3(0, transform.position.y, transform.position.z);
     }
 
     //Resets player state, HP and transform
