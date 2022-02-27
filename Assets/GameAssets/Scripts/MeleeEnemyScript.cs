@@ -19,7 +19,7 @@ public class MeleeEnemyScript : MonoBehaviour
 
     void Update()
     {
-        transform.position = new Vector3(3.44f, transform.position.y, transform.position.z);
+        transform.position = new Vector3(0f, transform.position.y, transform.position.z);
         float distance = Vector3.Distance(transform.position, target.position);
 
         if (currentState == "IdleState")
