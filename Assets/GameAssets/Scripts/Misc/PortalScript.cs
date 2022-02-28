@@ -56,6 +56,8 @@ public class PortalScript : MonoBehaviour
         //Disable Player's mesh
         player.transform.GetChild(0).gameObject.SetActive(false);
         player.transform.GetChild(1).gameObject.SetActive(false);
+
+        StartCoroutine(NextLevel());
     }
 
     private void MovePlayerIntoPortal()
@@ -72,6 +74,13 @@ public class PortalScript : MonoBehaviour
     private void ClosePortal()
     {
         animator.Play("Close");
+    }
+
+    private IEnumerator NextLevel()
+    {
+        yield return new WaitForSeconds(5.5f);
+
+        SceneHandler.instance.NextLevel();
     }
 
     private void OnTriggerStay(Collider other)
