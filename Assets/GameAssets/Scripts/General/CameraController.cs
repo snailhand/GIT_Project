@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;      
 
 public class CameraController : MonoBehaviour
 {
@@ -9,22 +10,20 @@ public class CameraController : MonoBehaviour
 
     public float smoothSpeed = 0.15f;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        target = GameObject.FindGameObjectWithTag("Player").transform;
-        offset = transform.position - target.position;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        AssignCameraToPlayer(GameObject.FindGameObjectWithTag("Player").transform);
     }
 
     void LateUpdate()
     {
         Vector3 desiredPosition = target.position + offset;
         transform.position = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
+    }
+
+    public void AssignCameraToPlayer(Transform player)
+    {
+        target = player;
+        offset = transform.position - target.position;
     }
 }
