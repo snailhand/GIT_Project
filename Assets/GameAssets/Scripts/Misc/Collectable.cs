@@ -1,18 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Collectable : MonoBehaviour
 {
 	public GameObject display;
-	public AudioClip clip;
+	public UnityEvent OnCollect;
 
 	private Collider _collider;
 
-	public virtual void Collect(AmongUs player)
+
+	public virtual void Collect()
 	{
 		display.SetActive(false);
 		_collider.enabled = false;
+		OnCollect.Invoke();
 	}
 
 	private void Awake()
@@ -27,9 +30,8 @@ public class Collectable : MonoBehaviour
 		{
 			if (other.TryGetComponent<AmongUs>(out var player))
 			{
-				Collect(player);
+				Collect();
 			}
 		}
 	}
-}
 }
