@@ -19,7 +19,7 @@ public class ButtonManager : MonoBehaviour
 
     public void ExitGame()
     {
-        
+        Application.Quit();
     }
 
     public void StartGame()
@@ -27,9 +27,9 @@ public class ButtonManager : MonoBehaviour
         SceneManager.LoadScene("Level_1");
     }
 
-    public void Instruction()
+    public void ControlScene()
     {
-
+        SceneManager.LoadScene("Controls");
     }
 
     public void MainMenu()
