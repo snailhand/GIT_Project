@@ -1,13 +1,21 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class GameMasterScript : MonoBehaviour
 {
+    public int score;
+    public int hp;
+    public int coins;
+
     public float respawnDelay;
     public AmongUs player;
     public Vector3 lastCheckPointPos;
-    private static GameMasterScript instance;
+    public static GameMasterScript instance;
+
+    public UnityEvent OnHealthUpdated;
+    public UnityEvent OnCoinsUpdated;
 
     // Start is called before the first frame update
     void Start()
@@ -37,11 +45,7 @@ public class GameMasterScript : MonoBehaviour
 
     private IEnumerator StartRespawning()
     {
-        var controller = player.controller;
-
         yield return new WaitForSeconds(respawnDelay);
-
-
         player.Respawn();
     }
 
@@ -49,5 +53,10 @@ public class GameMasterScript : MonoBehaviour
     {
         StopAllCoroutines();
         StartCoroutine(StartRespawning());
+    }
+
+    public void AddHP(int amount)
+    {
+        player.GetComponent<Health>().Increase(amount);
     }
 }
