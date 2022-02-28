@@ -7,8 +7,10 @@ public class MeleeEnemyScript : MonoBehaviour
     private string currentState = "IdleState";
     [SerializeField]
     private Transform target;
+    [SerializeField]
+    private Animator animator;
+
     public float chaseRange;
-    public Animator animator;
     public float speed;
     public float attackRange;
 
@@ -24,6 +26,7 @@ public class MeleeEnemyScript : MonoBehaviour
 
         if (currentState == "IdleState")
         {
+            animator.Play("Idle");
             if (distance < chaseRange)
             {
                 currentState = "ChaseState";
@@ -31,8 +34,7 @@ public class MeleeEnemyScript : MonoBehaviour
         }
         else if (currentState == "ChaseState")
         {
-            //animator.SetTrigger("ChaseAnimation");
-            //animator.SetBool("isAttacking", false);
+            animator.Play("Chase");
 
             if (distance < attackRange)
             {
@@ -52,7 +54,7 @@ public class MeleeEnemyScript : MonoBehaviour
         }
         else if (currentState == "AttackState")
         {
-            //animator.SetBool("isAttacking", true);
+            animator.Play("Idle");
             if (distance > attackRange)
             {
                 currentState = "ChaseState";

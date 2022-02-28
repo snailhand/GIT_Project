@@ -11,8 +11,14 @@ public class GunScript : MonoBehaviour
     bool firing;
     float fireTimer;
     Transform targetTransform;
+    Animator animator;
 
     int gunPointIndex;
+
+    void Start()
+    {
+        animator = GetComponentInChildren<Animator>();   
+    }
 
     void Update()
     {
@@ -20,7 +26,8 @@ public class GunScript : MonoBehaviour
         {
             while (fireTimer >= 1 / fireRate)
             {
-                SpawnShot();
+                animator.Play("Shoot");
+                StartCoroutine(SpawnShot());
                 fireTimer -= 1 / fireRate;
             }
 
@@ -40,8 +47,10 @@ public class GunScript : MonoBehaviour
         }
     }
 
-    void SpawnShot()
+    private IEnumerator SpawnShot()
     {
+        yield return new WaitForSeconds(.5f);
+
         var gunPoint = gunPoints[gunPointIndex++];
         var bullet = Instantiate(shotPrefab, gunPoint.position, gunPoint.rotation);
 

@@ -95,8 +95,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angleLimit: 180
   aimTolerance: 1
-  turnSpeed: 90
   range: 20
+  turnSpeed: 90
   turret: {fileID: 6220891808813830986}
 --- !u!1 &153821344277630194
 GameObject:
@@ -1201,7 +1201,7 @@ Animator:
   m_GameObject: {fileID: 6037156951442913409}
   m_Enabled: 0
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 69150d2820a054b1e884ce79ef40c256, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2cb3541fffeced64290715efa14b06a9, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

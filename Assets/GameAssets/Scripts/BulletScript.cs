@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class BulletScript : MonoBehaviour
 {
+    private bool hit;
     public Transform target;
     public float speed;
 
     void Update()
     {
-        transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        if(!hit)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target.position, speed * Time.deltaTime);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
@@ -22,6 +26,10 @@ public class BulletScript : MonoBehaviour
                 var collisionPoint = other.ClosestPoint(transform.position);
                 Vector3 direction = (collisionPoint - transform.position).normalized;
 
+                transform.localScale = new Vector3(2, 2, 2);
+                hit = true;
+
+                Destroy(gameObject,.3f);
                 player.TakeDamage(1, direction);
             }
         }
