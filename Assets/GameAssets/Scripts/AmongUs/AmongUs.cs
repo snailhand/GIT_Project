@@ -225,26 +225,33 @@ public class AmongUs : Player<AmongUs>
 
         if (hit.collider.CompareTag("Enemy"))
         {
-            if(hit.collider.TryGetComponent<MeleeEnemyScript>(out var enemy))
+            GameObject enemy;
+            if (hit.collider.GetComponent<MeleeEnemyScript>())
             {
-                if ((velocity.y <= 0) && IsPointUnderStep(hit.point))
-                {
-                    //Damage the enemy & bounce up
-                    var bounce = Mathf.Max(-verticalVelocity.y, stats.current.hurtUpwards);
-                    verticalVelocity = Vector3.up * bounce;
+                enemy = hit.collider.GetComponent<MeleeEnemyScript>().gameObject;
+            }
+            else
+            {
+                enemy = hit.collider.GetComponent<RangedEnemyScript>().gameObject;
+            }
 
-                    //TO BE REPLACED WITH ENEMY DEATH ANIMATION
-                    Destroy(enemy.gameObject);
-                }
-                else
-                {
-                    //Get direction of contact
-                    var collisionPoint = hit.collider.ClosestPoint(transform.position);
-                    Vector3 direction = (collisionPoint - transform.position).normalized;
+            if ((velocity.y <= 0) && IsPointUnderStep(hit.point))
+            {
+                //Damage the enemy & bounce up
+                var bounce = Mathf.Max(-verticalVelocity.y, stats.current.hurtUpwards);
+                verticalVelocity = Vector3.up * bounce;
 
-                    //Take damage
-                    TakeDamage(1, -direction);
-                }
+                //TO BE REPLACED WITH ENEMY DEATH ANIMATION
+                Destroy(enemy);
+            }
+            else
+            {
+                //Get direction of contact
+                var collisionPoint = hit.collider.ClosestPoint(transform.position);
+                Vector3 direction = (collisionPoint - transform.position).normalized;
+
+                //Take damage
+                TakeDamage(1, -direction);
             }
         }
         else if (!health.isEmpty)
