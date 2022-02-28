@@ -4,15 +4,23 @@ using UnityEngine;
 
 public class PickUpScript : MonoBehaviour
 {
-    // Start is called before the first frame update
+    public bool rotate;
+    public float speed;
+
+    private float defaultYPosition;
+
     void Start()
     {
-        
+        defaultYPosition = this.transform.position.y;   
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if(rotate)
+        {
+            transform.Rotate(0, speed * 50 * Time.deltaTime, 0);
+        }
+
+        transform.position = new Vector3(transform.position.x, defaultYPosition + ((float)Mathf.Sin(Time.time) * speed), transform.position.z);
     }
 }
