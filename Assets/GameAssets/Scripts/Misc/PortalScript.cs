@@ -78,7 +78,7 @@ public class PortalScript : MonoBehaviour
 
     private IEnumerator NextLevel()
     {
-        yield return new WaitForSeconds(5.5f);
+        yield return new WaitForSeconds(delay/2);
 
         SceneHandler.instance.NextLevel();
     }
