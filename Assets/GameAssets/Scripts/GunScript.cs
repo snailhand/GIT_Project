@@ -50,10 +50,11 @@ public class GunScript : MonoBehaviour
     private IEnumerator SpawnShot()
     {
         yield return new WaitForSeconds(.5f);
-
+        var script = transform.GetComponent<RangedEnemyScript>();
         var gunPoint = gunPoints[gunPointIndex++];
         var bullet = Instantiate(shotPrefab, gunPoint.position, gunPoint.rotation);
 
+        script.audioSource.PlayOneShot(script.shoot);
         bullet.GetComponent<BulletScript>().target = targetTransform;
         Destroy(bullet, 4);
         gunPointIndex %= gunPoints.Length;

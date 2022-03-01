@@ -13,11 +13,12 @@ public class MountPointScript : MonoBehaviour
     public float range;
     public float turnSpeed = 90f;
     public Transform turret;
+    [SerializeField]
+    float distanceToTarget;
 
     void OnDrawGizmos()
     {
 #if UNITY_EDITOR
-        //range = 20f;
         var hardpoint = transform;
         var from = Quaternion.AngleAxis(-angleLimit / 2, hardpoint.up) * hardpoint.forward;
 
@@ -55,7 +56,7 @@ public class MountPointScript : MonoBehaviour
         var aimed = !reachAngleLimit && Quaternion.Angle(turret.rotation, targetRotation) < aimTolerance;
         turret.rotation = Quaternion.RotateTowards(turret.rotation, targetRotation, turnSpeed * Time.deltaTime);
         
-        var distanceToTarget = Vector3.Distance(transform.position, targetPoint);
+        distanceToTarget = Vector3.Distance(transform.position, targetPoint);
 
         if (distanceToTarget < range)
         {

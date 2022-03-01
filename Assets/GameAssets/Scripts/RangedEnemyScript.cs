@@ -11,7 +11,8 @@ public class RangedEnemyScript : MonoBehaviour
     public Transform target;
 
     public AudioClip[] die;
-    private AudioSource audioSource;
+    public AudioClip shoot;
+    public AudioSource audioSource;
 
     void OnDrawGizmos()
     {

@@ -85,6 +85,7 @@ MonoBehaviour:
   die:
   - {fileID: 8300000, guid: 9e9f946f27025ed468575cc0b504943b, type: 3}
   - {fileID: 8300000, guid: 8ed5d7aa1a80ca749a15894fa6a7a4cf, type: 3}
+  shoot: {fileID: 8300000, guid: 40a8049f7460c2c4085a65d30d1993e8, type: 3}
 --- !u!114 &25550919522138064
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -97,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f109247e892541489d1042d157ff89e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  angleLimit: 360
+  angleLimit: 100
   aimTolerance: 1
   range: 17
-  turnSpeed: 90
+  turnSpeed: 150
   turret: {fileID: 6220891808813830986}
 --- !u!82 &1996450069
 AudioSource:
