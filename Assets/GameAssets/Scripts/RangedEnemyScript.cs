@@ -10,6 +10,9 @@ public class RangedEnemyScript : MonoBehaviour
     public MountPointScript[] mountPoints;
     public Transform target;
 
+    public AudioClip[] die;
+    private AudioSource audioSource;
+
     void OnDrawGizmos()
     {
 #if UNITY_EDITOR
@@ -45,6 +48,7 @@ public class RangedEnemyScript : MonoBehaviour
     private void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -66,6 +70,12 @@ public class RangedEnemyScript : MonoBehaviour
         if (aimed)
         {
             gun.Fire(target);
-        }
+        }  
     }
+
+    public void Die()
+    {
+        audioSource.PlayOneShot(die[Random.Range(0,die.Length)]);
+        Destroy(gameObject, 0.1f);
+    }    
 }

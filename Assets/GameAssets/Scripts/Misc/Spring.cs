@@ -5,17 +5,26 @@ using UnityEngine;
 public class Spring : MonoBehaviour
 {
     public float force;
+    private AudioSource audioSource;
+    public AudioClip bounce;
+
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
 
     public void BounceUpwards(AmongUs player)
     {
         if(player.verticalVelocity.y <= 0)
         {
+            audioSource.PlayOneShot(bounce);
             player.verticalVelocity = Vector3.up * force;
         }
     }
 
     private void PushInDirection(Vector3 direction, AmongUs player)
     {
+        audioSource.PlayOneShot(bounce);
         player.horizontalVelocity = direction * force;
         player.verticalVelocity = Vector3.up * force;
     }

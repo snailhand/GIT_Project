@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿    using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -14,9 +14,13 @@ public class MeleeEnemyScript : MonoBehaviour
     public float speed;
     public float attackRange;
 
+    public AudioClip[] die;
+    private AudioSource audioSource;
+
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
+        audioSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -60,5 +64,11 @@ public class MeleeEnemyScript : MonoBehaviour
                 currentState = "ChaseState";
             }
         }
+    }
+
+    public void Die()
+    {
+        audioSource.PlayOneShot(die[Random.Range(0, die.Length)]);
+        Destroy(gameObject, 0.1f);
     }
 }

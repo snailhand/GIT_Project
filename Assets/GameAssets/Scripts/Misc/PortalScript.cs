@@ -14,11 +14,16 @@ public class PortalScript : MonoBehaviour
     private Animator animator;
     private CharacterController controller;
 
+    private AudioSource _audio;
+    public AudioClip portalOpen;
+    public AudioClip portalClose;
+
     void Start()
     {
         player = GameObject.Find("Player");
         controller = player.GetComponent<CharacterController>();
         animator = GetComponent<Animator>();
+        _audio = GetComponent<AudioSource>();
 
         if(spawnPlayer)
         {
@@ -39,12 +44,14 @@ public class PortalScript : MonoBehaviour
 
     private IEnumerator SpawnInPlayer(CharacterController controller, GameObject playerObj)
     {
+        StartCoroutine(PlaySound(1.1f, portalOpen));
         yield return new WaitForSeconds(delay);
 
         //Spawn in player
         controller.enabled = true;
         playerObj.transform.GetChild(0).gameObject.SetActive(true);
         playerObj.transform.GetChild(1).gameObject.SetActive(true);
+        playerObj.GetComponent<AmongUs>().OnSpawn?.Invoke();
 
         ClosePortal();
     }
@@ -56,6 +63,7 @@ public class PortalScript : MonoBehaviour
         //Disable Player's mesh
         player.transform.GetChild(0).gameObject.SetActive(false);
         player.transform.GetChild(1).gameObject.SetActive(false);
+        player.GetComponent<AmongUs>().OnSpawn?.Invoke();
 
         StartCoroutine(NextLevel());
     }
@@ -73,6 +81,7 @@ public class PortalScript : MonoBehaviour
 
     private void ClosePortal()
     {
+        StartCoroutine(PlaySound(2, portalClose));
         animator.Play("Close");
     }
 
@@ -81,6 +90,13 @@ public class PortalScript : MonoBehaviour
         yield return new WaitForSeconds(delay/2);
 
         SceneHandler.instance.NextLevel();
+    }
+
+    private IEnumerator PlaySound(float delay, AudioClip sound)
+    {
+        yield return new WaitForSeconds(delay);
+
+        _audio.PlayOneShot(sound);
     }
 
     private void OnTriggerStay(Collider other)

@@ -13,6 +13,12 @@ public class AmongUs : Player<AmongUs>
     //Called when Player gets damaged
     public UnityEvent OnHurt;
 
+    //Called when Player spawns
+    public UnityEvent OnSpawn;
+
+    //Called when Player gets revived
+    public UnityEvent OnRespawn;
+
     //Called when the Player dies
     public UnityEvent OnDeath;
 
@@ -56,11 +62,12 @@ public class AmongUs : Player<AmongUs>
     //Resets player state, HP and transform
     public virtual void Respawn()
     {
-        print("Respawning at: " + respawnPosition);
         health.ResetHp();
         SetController(false);
         transform.SetPositionAndRotation(respawnPosition, respawnRotation);
         SetController(true);
+        OnRespawn?.Invoke();
+
         states.Change<State_AmongUsIdle>();
     }
 
@@ -241,8 +248,15 @@ public class AmongUs : Player<AmongUs>
                 var bounce = Mathf.Max(-verticalVelocity.y, stats.current.hurtUpwards);
                 verticalVelocity = Vector3.up * bounce;
 
-                //TO BE REPLACED WITH ENEMY DEATH ANIMATION
-                Destroy(enemy);
+                //Trigger die for enemy
+                if(enemy.GetComponent<MeleeEnemyScript>())
+                {
+                    enemy.GetComponent<MeleeEnemyScript>().Die();
+                }
+                else
+                {
+                    enemy.GetComponent<RangedEnemyScript>().Die();
+                }
             }
             else
             {
@@ -265,6 +279,4 @@ public class AmongUs : Player<AmongUs>
 
         }
     }
-
-
 }

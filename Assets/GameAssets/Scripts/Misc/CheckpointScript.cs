@@ -4,18 +4,17 @@ using UnityEngine;
 
 public class CheckpointScript : MonoBehaviour
 {
+    private bool activated;
+
     private GameMasterScript gm;
+    private AudioSource _audio;
+    public AudioClip activate;
 
     // Start is called before the first frame update
     void Start()
     {
         gm = GameObject.FindGameObjectWithTag("GM").GetComponent<GameMasterScript>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        _audio = GetComponent<AudioSource>();
     }
 
     void OnTriggerEnter(Collider other)
@@ -24,7 +23,12 @@ public class CheckpointScript : MonoBehaviour
         {
             if(other.TryGetComponent<AmongUs>(out var player))
             {
-                print("Respawn point set at: " + transform.position);
+                if(!activated)
+                {
+                    _audio.PlayOneShot(activate);
+                    activated = true;
+                }
+
                 gm.lastCheckPointPos = transform.position;
                 player.SetRespawn(this.transform.position, this.transform.rotation);
             }
